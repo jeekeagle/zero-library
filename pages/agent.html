@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent · Zero-Library</title>
+  <meta name="description" content="Agent —— 能自主规划、调用工具、达成目标的程序。" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="../index.html">
+        <img class="logo-mark" src="../img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../intro.html">序言</a></li>
+        <li><a href="../archive.html">索引</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list"><li><a href="../intro.html">序言</a></li></ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="prompt.html">一 · Prompt</a></li>
+          <li><a href="context.html">二 · Context</a></li>
+          <li><a href="memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="tool.html">四 · Tool</a></li>
+          <li><a href="skill.html">五 · Skill</a></li>
+          <li><a href="agent.html" class="active">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="loop.html">七 · Loop</a></li>
+          <li><a href="topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="../archive.html">索引</a></li>
+          <li><a href="../about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="../index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <a href="../intro.html">序章</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">六 · Agent</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">六</span>
+            <span class="lib-chapter-meta__vol">第二编 · 第三章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>2026.06</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 5 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">Agent</h1>
+          <p class="lib-chapter__subtitle">能自主规划、调用工具、达成目标的程序。</p>
+          <div class="lib-chapter__tags">
+            <span class="tag">能力层</span>
+            <span class="tag">自主</span>
+            <span class="tag">目标</span>
+          </div>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>定义</h2>
+          <p><strong>Agent</strong> 是一个<strong>接到目标后能自主规划、调用工具、直到目标完成</strong>的程序。它不是更聪明的对话,而是一个会<em>自己决定下一步该干什么</em>的循环体。</p>
+
+          <h2><span class="num">二</span>为什么重要</h2>
+          <p>"对话"只能回答问题,"Agent" 能<strong>完成任务</strong>。这个区别,比模型参数大几个 B 重要得多。当你不再问 AI "该怎么写",而是直接告诉它"帮我把这个做完",Agent 范式才真正落地。</p>
+
+          <h2><span class="num">三</span>一个 Agent 的最小骨架</h2>
+<pre><code>目标: "把 /tmp/data.csv 转成 json 并校验字段"
+
+while 没完成 and 步数 &lt; MAX:
+    observation = 看现状()
+    thought     = 模型.plan(observation)
+    action      = 模型.choose_action(thought)
+    执行(action)
+    记录到日志
+
+return 结果</code></pre>
+
+          <p>三件事就够了:</p>
+          <ul>
+            <li><strong>观察</strong>(当前状态)</li>
+            <li><strong>思考</strong>(下一步该干什么)</li>
+            <li><strong>行动</strong>(调一个 Tool / 给最终答复)</li>
+          </ul>
+
+          <h2><span class="num">四</span>最小可跑的例子</h2>
+<pre><code>from openai import OpenAI
+
+client = OpenAI()
+tools = [...]  # 略,见 Tool 章
+
+messages = [{"role": "user", "content": "把 /tmp/data.csv 读出来转成 JSON"}]
+
+for _ in range(8):
+    resp = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=messages,
+        tools=tools,
+    )
+    msg = resp.choices[0].message
+    messages.append(msg)
+
+    if msg.tool_calls:  # 模型选择调用 Tool
+        for call in msg.tool_calls:
+            result = run_tool(call)  # 你的实现
+            messages.append({
+                "role": "tool",
+                "tool_call_id": call.id,
+                "content": result,
+            })
+        continue
+
+    print("最终答复:", msg.content)
+    break</code></pre>
+
+          <h2><span class="num">五</span>常见误区</h2>
+          <ul>
+            <li><strong>什么都想一步到位</strong> —— Agent 要<em>能停、能重试、能放弃</em>,不是永远不停。</li>
+            <li><strong>没有"完成"的判定</strong> —— 必须显式定义什么叫"完成",否则它会反复折腾。</li>
+            <li><strong>不限制最大步数</strong> —— 一定要设上限,否则一个调用循环能把账户跑空。</li>
+            <li><strong>以为 Agent = 强模型</strong> —— Agent 强不强,关键在<em>工具设计 + 任务拆解 + 反馈回路</em>,不在模型大小。</li>
+          </ul>
+
+          <div class="lib-chapter-nav">
+            <a href="skill.html"><small>← 上一篇</small>五 · Skill</a>
+            <a href="loop.html" style="text-align: right;"><small>下一篇 →</small>七 · Loop</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
