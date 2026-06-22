@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skill · Zero-Library</title>
+  <meta name="description" content="Skill —— 可复用的 prompt + tool + 文档的组合单元。" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="../index.html">
+        <img class="logo-mark" src="../img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../intro.html">序言</a></li>
+        <li><a href="../archive.html">索引</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list"><li><a href="../intro.html">序言</a></li></ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="prompt.html">一 · Prompt</a></li>
+          <li><a href="context.html">二 · Context</a></li>
+          <li><a href="memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="tool.html">四 · Tool</a></li>
+          <li><a href="skill.html" class="active">五 · Skill</a></li>
+          <li><a href="agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="loop.html">七 · Loop</a></li>
+          <li><a href="topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="../archive.html">索引</a></li>
+          <li><a href="../about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="../index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <a href="../intro.html">序章</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">五 · Skill</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">五</span>
+            <span class="lib-chapter-meta__vol">第二编 · 第二章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>2026.05</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 4 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">Skill</h1>
+          <p class="lib-chapter__subtitle">可复用的 prompt + tool + 文档的组合单元。</p>
+          <div class="lib-chapter__tags">
+            <span class="tag">能力层</span>
+            <span class="tag">打包</span>
+            <span class="tag">复用</span>
+          </div>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>定义</h2>
+          <p><strong>Skill</strong> 是把"做一件事"打包成<strong>一个可调用的单元</strong>。它通常包含:一段精心写的 prompt、若个干 Tool、必要的说明文档、以及可选的入口脚本。</p>
+
+          <h2><span class="num">二</span>为什么重要</h2>
+          <p>没有 Skill 之前,每次都得重新写 prompt、重新声明 Tool、重新调试行为。Skill 让"做一件事"可以<strong>一次写好、反复调用、别人也能用</strong>。</p>
+
+          <h2><span class="num">三</span>典型结构</h2>
+<pre><code>skills/
+└── translate-tech-doc/
+    ├── SKILL.md          # 给模型读的说明
+    ├── tools/
+    │   └── glossary.py   # 术语表查询
+    ├── examples/
+    │   └── input.md      # 一两个示例输入
+    └── scripts/
+        └── run.sh        # 入口脚本(可选)</code></pre>
+
+          <p><code>SKILL.md</code> 通常包含:</p>
+          <ul>
+            <li>这个 Skill 是干啥的、何时调用;</li>
+            <li>输入是什么、输出是什么;</li>
+            <li>它能调用的 Tool 列表;</li>
+            <li>一两个使用示例。</li>
+          </ul>
+
+          <h2><span class="num">四</span>最小可跑的 Skill</h2>
+<pre><code># SKILL.md  —— 内容大致是这样
+---
+name: summarize-url
+description: 给定一个 URL,抓回正文并总结成 3 句话。
+tools:
+  - fetch_url
+  - shorten
+---
+
+# Summarize URL
+
+## When to use
+- 用户给了一个 URL,想看摘要。
+
+## Steps
+1. 调用 fetch_url(url) 拿到正文
+2. 调用 shorten(text, max_sentences=3) 拿摘要
+3. 直接把摘要返回给用户</code></pre>
+
+          <h2><span class="num">五</span>常见误区</h2>
+          <ul>
+            <li><strong>Skill = 大 prompt</strong> —— 错。Skill 应该<em>小而专</em>,一个 Skill 只擅长一件事。</li>
+            <li><strong>Skill 越通用越好</strong> —— 越通用越不可控,要按场景拆分。</li>
+            <li><strong>Skill 没有版本</strong> —— 一定要跟代码一样,带版本号、能 diff、能回滚。</li>
+          </ul>
+
+          <div class="lib-chapter-nav">
+            <a href="tool.html"><small>← 上一篇</small>四 · Tool</a>
+            <a href="agent.html" style="text-align: right;"><small>下一篇 →</small>六 · Agent</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
