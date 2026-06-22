@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>序言 · Zero-Library</title>
+  <meta name="description" content="为什么把这八个概念单独整理出来 —— 关于本书的缘起、读法与原则。" />
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="index.html">
+        <img class="logo-mark" src="img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="intro.html" class="active">序言</a></li>
+        <li><a href="archive.html">索引</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索" title="搜索 (Ctrl+K)">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list">
+          <li><a href="intro.html" class="active">序言</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="pages/prompt.html">一 · Prompt</a></li>
+          <li><a href="pages/context.html">二 · Context</a></li>
+          <li><a href="pages/memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="pages/tool.html">四 · Tool</a></li>
+          <li><a href="pages/skill.html">五 · Skill</a></li>
+          <li><a href="pages/agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="pages/loop.html">七 · Loop</a></li>
+          <li><a href="pages/topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="archive.html">索引</a></li>
+          <li><a href="about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">序言</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">序</span>
+            <span class="lib-chapter-meta__vol">序章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>最后更新 2026.06</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 4 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">为什么要整理这些概念</h1>
+          <p class="lib-chapter__subtitle">Agent 时代的关键词越来越多,先把最常用、最重要的一组钉住。</p>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>问题的提出</h2>
+          <p>2024 年开始,做 AI 工程的人和写 Prompt 的人开始用同一套术语。</p>
+          <p>但术语太多、更新太快 —— 一会儿 <strong>function calling</strong>,一会儿 <strong>tool use</strong>;一会儿 <strong>RAG</strong>,一会儿 <strong>context window</strong>;一会儿 <strong>agent</strong>,一会儿 <strong>workflow</strong>。</p>
+          <p>新人来学,老兵自己讲,讲的都不是同一个东西。这本小书,想做的就是:把这一代 AI 工程里<strong>反复出现的、最重要的 8 个概念</strong>,用尽量短的篇幅讲清楚。</p>
+
+          <h2><span class="num">二</span>这本书长什么样</h2>
+          <p>三编八章,加一个序言和一个索引。</p>
+          <ul>
+            <li><strong>第一编 · 输入层</strong> —— 你给模型什么。Prompt、Context、Memory。</li>
+            <li><strong>第二编 · 能力层</strong> —— 模型能做什么。Tool、Skill、Agent。</li>
+            <li><strong>第三编 · 结构层</strong> —— 这些能力怎么组合。Loop、Topology。</li>
+          </ul>
+          <p>每章按"定义 → 为什么重要 → 典型用法 → 一个最小代码片段 → 常见误区"的固定结构写。你可以直接跳到感兴趣的那一章,不必从头读起。</p>
+
+          <h2><span class="num">三</span>几条原则</h2>
+          <p>写之前先告诉你我会怎么写、不会怎么写 ——</p>
+          <ul>
+            <li><strong>不追新词。</strong> 这一章如果下周有新术语替换,我宁可改成"待补充",也不要把没想清楚的词塞进来。</li>
+            <li><strong>带最小例子。</strong> 每个概念至少有一个 5 行以内能看懂的代码片段。</li>
+            <li><strong>承认边界。</strong> 我不知道的会写"不知道",而不是装作知道。</li>
+            <li><strong>开源协作。</strong> 任何人都能在 GitHub 上提 PR 加章节、改错别字、补充反例。</li>
+          </ul>
+
+          <h2><span class="num">四</span>它不是什么</h2>
+          <ul>
+            <li>不是教程 —— 不会一步一步教你搭 Agent。</li>
+            <li>不是论文 —— 不会做引用、做对比实验。</li>
+            <li>不是导购 —— 不会告诉你"哪个框架最好用"。</li>
+          </ul>
+          <p>它更像你写代码时随手开的一个 <code>concepts.md</code>,只不过这个 concepts 放在 GitHub Pages 上,谁都能看、能改、能加。</p>
+
+          <hr>
+
+          <p>如果你第一次来,建议先读 <a href="pages/prompt.html">Prompt</a> 和 <a href="pages/agent.html">Agent</a> —— 一头一尾,把整本书的脊梁搭起来。</p>
+
+          <div class="lib-chapter-nav">
+            <a href="index.html"><small>← 上一篇</small>首页</a>
+            <a href="pages/prompt.html" style="text-align: right;"><small>下一篇 →</small>一 · Prompt</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
