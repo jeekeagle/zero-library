@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loop · Zero-Library</title>
+  <meta name="description" content="Loop —— Agent 反复执行 观察 → 思考 → 行动 直到目标达成的循环结构。" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="../index.html">
+        <img class="logo-mark" src="../img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../intro.html">序言</a></li>
+        <li><a href="../archive.html">索引</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list"><li><a href="../intro.html">序言</a></li></ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="prompt.html">一 · Prompt</a></li>
+          <li><a href="context.html">二 · Context</a></li>
+          <li><a href="memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="tool.html">四 · Tool</a></li>
+          <li><a href="skill.html">五 · Skill</a></li>
+          <li><a href="agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="loop.html" class="active">七 · Loop</a></li>
+          <li><a href="topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="../archive.html">索引</a></li>
+          <li><a href="../about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="../index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <a href="../intro.html">序章</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">七 · Loop</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">七</span>
+            <span class="lib-chapter-meta__vol">第三编 · 第一章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>2026.05</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 4 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">Loop</h1>
+          <p class="lib-chapter__subtitle">Agent 反复执行"观察 → 思考 → 行动"直到目标达成。</p>
+          <div class="lib-chapter__tags">
+            <span class="tag">结构层</span>
+            <span class="tag">循环</span>
+            <span class="tag">ReAct</span>
+          </div>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>定义</h2>
+          <p><strong>Loop</strong>(循环)是 Agent 的<strong>运行骨架</strong>。模型每次不是只答一次就结束,而是在循环里反复"看 → 想 → 做",直到任务完成或主动放弃。</p>
+
+          <h2><span class="num">二</span>为什么重要</h2>
+          <p>没有 Loop,Agent 一次性给完答复就走 —— 错了没法改、不确定没法查。Loop 是<strong>让 Agent 能修正自己、能查证、能放弃</strong>的机制。</p>
+
+          <h2><span class="num">三</span>三种典型 Loop</h2>
+          <h3>1. ReAct(Reason + Act)</h3>
+          <p>最经典。每轮都让模型先输出<em>思考</em>,再选<em>行动</em>。</p>
+<pre><code>Thought: 我需要先查北京天气。
+Action:  get_weather(city="Beijing")
+Obs:     {"temp": 22, "sky": "晴"}
+Thought: 数据够了,可以回答了。
+Final:   北京今天 22 度,晴。</code></pre>
+
+          <h3>2. Reflection(反思)</h3>
+          <p>每轮不仅做事,还<em>评估上一轮的结果</em>,然后决定下一步。常见做法:一个 Agent 做,另一个 Agent 评。</p>
+
+          <h3>3. Plan-and-Execute(先规划,再执行)</h3>
+          <p>先用一次 LLM 调用<em>把任务拆成步骤</em>,然后按步骤执行。遇到失败时,回到"规划"阶段重排。</p>
+
+          <h2><span class="num">四</span>最小可跑的例子(ReAct)</h2>
+<pre><code>def react_loop(goal, max_steps=8):
+    trace = [{"role": "user", "content": goal}]
+    for _ in range(max_steps):
+        resp = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=trace,
+            tools=tools,
+        )
+        msg = resp.choices[0].message
+        trace.append(msg)
+        if not msg.tool_calls:
+            return msg.content       # 模型选择结束
+        for call in msg.tool_calls:
+            obs = run_tool(call)
+            trace.append({"role": "tool",
+                          "tool_call_id": call.id,
+                          "content": obs})
+    return "步数用尽"</code></pre>
+
+          <h2><span class="num">五</span>常见误区</h2>
+          <ul>
+            <li><strong>Loop 没终止条件</strong> —— 必须有"任务完成"的判断,否则模型会自己造答案。</li>
+            <li><strong>没有最大步数</strong> —— 一定设上限,防止无限循环把账户跑空。</li>
+            <li><strong>trace 无限增长</strong> —— 上下文会爆炸,要在中途<em>摘要、压缩、丢弃旧回合</em>。</li>
+            <li><strong>Loop 与工具耦合太死</strong> —— 把 Loop 抽象出来,让它能跑不同的工具集。</li>
+          </ul>
+
+          <div class="lib-chapter-nav">
+            <a href="agent.html"><small>← 上一篇</small>六 · Agent</a>
+            <a href="topology.html" style="text-align: right;"><small>下一篇 →</small>八 · Topology</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
