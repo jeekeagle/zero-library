@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Topology · Zero-Library</title>
+  <meta name="description" content="Topology —— 多个 Agent 怎么连:串行、并行、监督。" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="../index.html">
+        <img class="logo-mark" src="../img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../intro.html">序言</a></li>
+        <li><a href="../archive.html">索引</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list"><li><a href="../intro.html">序言</a></li></ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="prompt.html">一 · Prompt</a></li>
+          <li><a href="context.html">二 · Context</a></li>
+          <li><a href="memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="tool.html">四 · Tool</a></li>
+          <li><a href="skill.html">五 · Skill</a></li>
+          <li><a href="agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="loop.html">七 · Loop</a></li>
+          <li><a href="topology.html" class="active">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="../archive.html">索引</a></li>
+          <li><a href="../about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="../index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <a href="../intro.html">序章</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">八 · Topology</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">八</span>
+            <span class="lib-chapter-meta__vol">第三编 · 第二章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>2026.06</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 5 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">Topology</h1>
+          <p class="lib-chapter__subtitle">多个 Agent 怎么连 —— 串行、并行、监督,每种背后是不同的组织哲学。</p>
+          <div class="lib-chapter__tags">
+            <span class="tag">结构层</span>
+            <span class="tag">多 Agent</span>
+            <span class="tag">协作</span>
+          </div>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>定义</h2>
+          <p><strong>Topology</strong>(拓扑)是多个 Agent 之间的<strong>连接方式</strong>。一旦任务复杂到单个 Agent 搞不定,我们就开始<em>画图</em>—— 谁先谁后、谁调度谁、谁投票谁。不同的画法,就是不同的拓扑。</p>
+
+          <h2><span class="num">二</span>三种基本拓扑</h2>
+          <h3>1. 串行(流水线)</h3>
+          <p><code>A → B → C → D</code>。每个 Agent 干一件事,把结果丢给下一个。</p>
+          <ul>
+            <li><strong>优点</strong>:简单、高效、易调试。</li>
+            <li><strong>缺点</strong>:一个卡住全卡住,没有回头路。</li>
+            <li><strong>适用</strong>:流程清晰、步骤可拆的任务 —— 写代码、做多轮审核、生成报告。</li>
+          </ul>
+
+          <h3>2. 并行(投票 / 竞争)</h3>
+          <p>同一个任务给 N 个 Agent 同时做,然后选最好的,或者让它们互相打分。</p>
+          <ul>
+            <li><strong>优点</strong>:质量高,容错好。</li>
+            <li><strong>缺点</strong>:费钱,响应慢。</li>
+            <li><strong>适用</strong>:质量比成本重要的场景 —— 关键决策、复杂推理、需要多视角的问题。</li>
+          </ul>
+
+          <h3>3. 监督(分层 / Hierarchical)</h3>
+          <p>一个"老板 Agent"指挥一群"员工 Agent",老板负责拆任务、检查结果、决定重做。</p>
+          <ul>
+            <li><strong>优点</strong>:灵活、可处理开放任务。</li>
+            <li><strong>缺点</strong>:依赖一个好的"老板",老板崩了全崩。</li>
+            <li><strong>适用</strong>:复杂、开放、目标不明确的任务 —— 科研、长期项目、用户陪伴。</li>
+          </ul>
+
+          <h2><span class="num">三</span>实际系统是混合的</h2>
+<pre><code>用户输入
+└─ 监督层 (老板 Agent)
+   ├─ 串行子流 1 (规划 → 搜索 → 整理)
+   ├─ 并行子流 2 (三个审稿人投票)
+   └─ 监督层回收 → 输出</code></pre>
+          <p>也就是说,我们其实在<strong>画组织架构图</strong>。老板分活、员工执行、HR 做 review —— 全套人类组织语言都搬过来了。</p>
+
+          <h2><span class="num">四</span>最小可跑的例子(并行投票)</h2>
+<pre><code>import concurrent.futures
+
+def solve(prompt):
+    return client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}]
+    ).choices[0].message.content
+
+prompts = [f"用方法 {i} 解这道题:{problem}" for i in range(3)]
+with concurrent.futures.ThreadPoolExecutor() as ex:
+    answers = list(ex.map(solve, prompts))
+
+# 让模型挑最好的
+best = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user",
+               "content": f"从下面三个答案里选一个最好的,只输出原文:\n" +
+                          "\n---\n".join(answers)}]
+).choices[0].message.content
+print(best)</code></pre>
+
+          <h2><span class="num">五</span>常见误区</h2>
+          <ul>
+            <li><strong>把"多 Agent"当银弹</strong> —— 单体能搞定的就别拆,多 Agent 协调本身有成本。</li>
+            <li><strong>没有共享 Memory</strong> —— 各 Agent 各自瞎猜,反而比单个还差。</li>
+            <li><strong>老板 Agent 太弱</strong> —— 老板比员工还笨,整个组织就跑偏。</li>
+            <li><strong>不考虑终止</strong> —— 多 Agent 容易出现"互相等着对方先动"的死锁。</li>
+          </ul>
+
+          <div class="lib-chapter-nav">
+            <a href="loop.html"><small>← 上一篇</small>七 · Loop</a>
+            <a href="../archive.html" style="text-align: right;"><small>下一篇 →</small>索引</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
