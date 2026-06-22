@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Context · Zero-Library</title>
+  <meta name="description" content="Context —— 模型一次能看见的全部信息,以及怎么在有限窗口里塞对东西。" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="../index.html">
+        <img class="logo-mark" src="../img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../intro.html">序言</a></li>
+        <li><a href="../archive.html">索引</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list"><li><a href="../intro.html">序言</a></li></ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="prompt.html">一 · Prompt</a></li>
+          <li><a href="context.html" class="active">二 · Context</a></li>
+          <li><a href="memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="tool.html">四 · Tool</a></li>
+          <li><a href="skill.html">五 · Skill</a></li>
+          <li><a href="agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="loop.html">七 · Loop</a></li>
+          <li><a href="topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="../archive.html">索引</a></li>
+          <li><a href="../about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="../index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <a href="../intro.html">序章</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">二 · Context</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">二</span>
+            <span class="lib-chapter-meta__vol">第一编 · 第二章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>2026.03</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 4 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">Context</h1>
+          <p class="lib-chapter__subtitle">模型一次能"看见"的全部信息,以及怎么在有限窗口里塞对东西。</p>
+          <div class="lib-chapter__tags">
+            <span class="tag">输入层</span>
+            <span class="tag">窗口</span>
+            <span class="tag">工程</span>
+          </div>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>定义</h2>
+          <p><strong>Context</strong>(上下文)是模型在一次前向推理中能<strong>同时看见</strong>的全部 token。系统提示、用户消息、历史回合、工具返回结果,都拼在一起,塞进一个固定大小的<strong>上下文窗口</strong>(context window)。</p>
+
+          <h2><span class="num">二</span>为什么重要</h2>
+          <p>窗口不是无限的。哪怕是 200K token 的窗口,塞太满也会:</p>
+          <ul>
+            <li>让推理变慢、成本变高;</li>
+            <li>让模型"注意力涣散",中间的内容被忽略;</li>
+            <li>触发模型的"上下文焦虑"—— 老把回复往长里写。</li>
+          </ul>
+          <p><strong>怎么塞、塞什么、什么时候清掉</strong>,是 Agent 工程的核心手艺。</p>
+
+          <h2><span class="num">三</span>典型结构</h2>
+<pre><code>[ system prompt  ]  ← 固定,几百到几千 token
+[ 用户当前问题    ]  ← 几十到几百 token
+[ 历史对话        ]  ← 累积,可能上千 token
+[ 工具返回结果    ]  ← 检索文档、API 返回
+[ 上一轮思维链    ]  ← 可选,ReAct / CoT
+───────────────
+总 token &lt; context_window</code></pre>
+
+          <h2><span class="num">四</span>最小可跑的例子</h2>
+<pre><code>from openai import OpenAI
+
+client = OpenAI()
+messages = [
+    {"role": "system",  "content": "你只用一句中文回答。"},
+    {"role": "user",    "content": "1+1=?"},
+]
+resp = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=messages,
+    max_tokens=50,  # 限制输出,也是 context 的一部分
+)
+print(resp.choices[0].message.content)
+# 二。</code></pre>
+
+          <h2><span class="num">五</span>常见误区</h2>
+          <ul>
+            <li><strong>塞满窗口 = 充分利用</strong> —— 错。模型对窗口中段的注意力最弱,关键信息要放头尾。</li>
+            <li><strong>不切分历史</strong> —— 几轮对话之后,早期内容会被稀释,需要主动摘要或丢弃。</li>
+            <li><strong>把 RAG 结果塞进同一个 context</strong> —— 检索质量差时,会让模型更糊涂。要<em>先粗筛再精排</em>。</li>
+            <li><strong>忽视 token 计费</strong> —— 输入输出都计费,长 context 直接拖慢响应 + 拉高成本。</li>
+          </ul>
+
+          <div class="lib-chapter-nav">
+            <a href="prompt.html"><small>← 上一篇</small>一 · Prompt</a>
+            <a href="memory.html" style="text-align: right;"><small>下一篇 →</small>三 · Memory</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
