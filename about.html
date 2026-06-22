@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于 · Zero-Library</title>
+  <meta name="description" content="关于 Zero-Library 这个小书的来历、写作原则与未来计划。" />
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="index.html">
+        <img class="logo-mark" src="img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="intro.html">序言</a></li>
+        <li><a href="archive.html">索引</a></li>
+        <li><a href="about.html" class="active">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索" title="搜索 (Ctrl+K)">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list">
+          <li><a href="intro.html">序言</a></li>
+          <li><a href="about.html" class="active">关于</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="pages/prompt.html">一 · Prompt</a></li>
+          <li><a href="pages/context.html">二 · Context</a></li>
+          <li><a href="pages/memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="pages/tool.html">四 · Tool</a></li>
+          <li><a href="pages/skill.html">五 · Skill</a></li>
+          <li><a href="pages/agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="pages/loop.html">七 · Loop</a></li>
+          <li><a href="pages/topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="archive.html">索引</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">关于</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">关</span>
+            <span class="lib-chapter-meta__vol">序章 · 关于</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>最后更新 2026.06</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 3 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">关于这间小书铺</h1>
+          <p class="lib-chapter__subtitle">关于它的来历、原则与未来。</p>
+        </header>
+
+        <div class="lib-prose">
+          <p>Zero-Library 是一个<strong>关于 Agent 时代核心概念</strong>的小型开源站点 —— 这里陈列的不是教程,也不是论文,是一组<strong>反复出现的关键词 + 最短的解释 + 最小可跑的代码</strong>。</p>
+
+          <h2>这里收什么</h2>
+          <p>两类东西,大致按这个顺序:</p>
+          <ul>
+            <li><strong>概念 (Concept)</strong> —— 一个具体的词,比如 Prompt、Context、Tool、Agent。它有自己的定义、自己的边界、自己常见的使用场景。</li>
+            <li><strong>关系 (Relation)</strong> —— 这些概念之间怎么连,谁包含谁,谁和谁配合。结构层(Loop、Topology)主要干这件事。</li>
+          </ul>
+
+          <h2>几个原则</h2>
+          <ul>
+            <li><strong>极简。</strong> 每章尽量控制在 5 分钟能读完的体量。</li>
+            <li><strong>带最小例子。</strong> 没有代码的概念不写,因为它在 AI 工程里没有意义。</li>
+            <li><strong>承认边界。</strong> 我不知道的会写"未知",不装懂。</li>
+            <li><strong>开源协作。</strong> 任何人都能在 GitHub 上提 issue / PR,补充新概念、修改错别字、给出反例。</li>
+            <li><strong>没有评论、没有订阅、没有广告。</strong> RSS 是给愿意订阅的人留的,其余请自便。</li>
+          </ul>
+
+          <h2>它不是什么</h2>
+          <ul>
+            <li>不是 <em>《百种 AI 概念大全》</em>(系统性的东西会被快速打脸)。</li>
+            <li>不是教程站(我写的时候读者是未来的我自己,不是小白)。</li>
+            <li>不是 newsletter(我受不了每周交稿的压力)。</li>
+          </ul>
+          <p>它更像你写代码时随手开的一个 <code>concepts.md</code>,只不过这个 concepts 放在 GitHub Pages 上,谁都能读。</p>
+
+          <h2>以后会怎样</h2>
+          <p>不知道。这本身就是一种实验 —— 在概念爆炸的年代,坚持把"基础款"讲清楚,有没有价值。</p>
+          <p>我的赌注是:有,但要慢、要真、要少。</p>
+          <p>如果你也想整理自己的概念词典,无论公开不公开,我都建议开一个这样的站。不是为了涨粉,是为了让明天的自己,能回看到今天以为"懂了"的那些词,到底懂了几分。</p>
+
+          <div class="lib-chapter-nav">
+            <a href="intro.html"><small>← 上一篇</small>序言</a>
+            <a href="archive.html" style="text-align: right;"><small>下一篇 →</small>索引</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
