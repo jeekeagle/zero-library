@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zero-Library · Agent 时代的核心概念</title>
-  <meta name="description" content="一本关于 Agent 时代核心概念的极简小书 —— Prompt、Tool、Memory、Skill、Topology、Loop、Context、Agent。" />
+  <meta name="description" content="一本关于 Agent 时代核心概念的极简小书 —— Prompt、Context、Memory、Tool、Skill、Agent、Loop、Topology。" />
   <meta property="og:title" content="Zero-Library · Agent 时代的核心概念" />
   <meta property="og:description" content="一本关于 Agent 时代核心概念的极简小书。" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#0a0a0a" />
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
   <link rel="canonical" href="https://jeekeagle.github.io/zero-library/" />
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -16,6 +16,7 @@
 </head>
 <body>
   <div class="lib-drawer-overlay"></div>
+
   <!-- 导航 -->
   <nav class="lib-nav" aria-label="主导航">
     <div class="container lib-nav__inner">
@@ -38,202 +39,277 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="lib-hero">
-    <div class="container lib-hero__inner">
-      <div class="lib-hero__eyebrow">Zero · Library · Agent Era</div>
-      <h1 class="lib-hero__title">
-        Agent 时代的<br>
-        <span class="accent">核心概念</span>
-      </h1>
-      <p class="lib-hero__sub">
-        一本关于 Prompt、Tool、Memory、Skill、Topology、Loop、Context 的极简小书。
-        不追新词,只把这一代 AI 工程里反复出现的那些概念,讲清楚。
-      </p>
-      <div class="lib-hero__meta">
-        <span>8 个核心概念</span>
-        <span>约 30 分钟读完</span>
-        <span>持续更新</span>
-      </div>
-      <div class="lib-cta-row">
-        <a class="lib-cta lib-cta--primary" href="intro.html">从序言开始 →</a>
-        <a class="lib-cta lib-cta--ghost" href="#concepts">先看目录</a>
+  <!-- HERO -->
+  <header class="hp-hero">
+    <div class="hp-hero__grid" aria-hidden="true"></div>
+    <div class="container">
+
+      <!-- 顶部状态条 -->
+      <div class="hp-statusbar">
+        <div class="hp-statusbar__left">
+          <span><span class="dot"></span>VOL. 01 — IN PROGRESS</span>
+          <span class="sep">/</span>
+          <span>EDITION 2026.06</span>
+        </div>
+        <div class="hp-statusbar__right">
+          <span>ISSUED BY <b style="color:var(--ink)">jeekeagle</b></span>
+          <span class="sep">/</span>
+          <span>MIT LICENSE</span>
+          <span class="sep">/</span>
+          <span>READ 30 MIN</span>
+        </div>
       </div>
 
-      <div class="lib-stats">
-        <div class="lib-stat">
-          <div class="lib-stat__num">8<span class="unit">个</span></div>
-          <div class="lib-stat__label">核心概念</div>
+      <div class="hp-hero__inner">
+        <div class="hp-hero__left">
+          <div class="hp-hero__eyebrow">AGENT ERA · 核心概念</div>
+          <h1 class="hp-hero__title">
+            <span class="line">关于 Agent</span>
+            <span class="line"><span class="accent">时代</span>的</span>
+            <span class="line">八件事。</span>
+          </h1>
+          <p class="hp-hero__sub">
+            一本关于 Prompt、Context、Memory、Tool、Skill、Agent、Loop、Topology 的极简小书。
+            不追新词,只把这一代 AI 工程里反复出现的概念,讲清楚。
+          </p>
+
+          <div class="hp-hero__meta">
+            <span><span class="k">CONCEPTS</span><span class="v">08</span></span>
+            <span><span class="k">CHAPTERS</span><span class="v">03</span></span>
+            <span><span class="k">READING</span><span class="v">≈ 30 MIN</span></span>
+            <span><span class="k">UPDATED</span><span class="v">2026.06.22</span></span>
+          </div>
+
+          <div class="hp-cta-row">
+            <a class="hp-cta hp-cta--primary" href="intro.html">
+              从序言开始 <span aria-hidden="true">→</span>
+            </a>
+            <a class="hp-cta hp-cta--ghost" href="#concepts">
+              浏览目录
+            </a>
+          </div>
         </div>
-        <div class="lib-stat">
-          <div class="lib-stat__num">7<span class="unit">章</span></div>
-          <div class="lib-stat__label">主章节</div>
-        </div>
-        <div class="lib-stat">
-          <div class="lib-stat__num">2026</div>
-          <div class="lib-stat__label">开始记录</div>
-        </div>
-        <div class="lib-stat">
-          <div class="lib-stat__num">MIT</div>
-          <div class="lib-stat__label">内容许可</div>
-        </div>
+
+        <aside class="hp-hero__right">
+          <div class="hp-hero__side">
+            <div class="hp-hero__side-label">EDITORIAL NOTE</div>
+            <p class="hp-hero__side-text">
+              Agent 时代最大的变化,不是模型变强了 ——<br>
+              是问题被重新切分了。
+            </p>
+            <a class="hp-hero__side-cta" href="intro.html">
+              关于本书 →
+            </a>
+          </div>
+        </aside>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- 核心概念卡片 -->
-    <section id="concepts" class="lib-section">
-      <div class="container">
-        <div class="lib-section__head">
-          <div>
-            <h2 class="lib-section__title">核心概念</h2>
-            <p class="lib-section__sub">Agent 工程里反复出现的 8 个关键词 —— 每条带一个简短解释和一个代码片段。</p>
-          </div>
-          <a class="lib-section__link" href="archive.html">查看全部 →</a>
+  <!-- 走马灯 -->
+  <div class="hp-marquee" aria-hidden="true">
+    <div class="hp-marquee__track">
+      <span>PROMPT <em>·</em> CONTEXT <em>·</em> MEMORY <em>·</em> TOOL <em>·</em> SKILL <em>·</em> AGENT <em>·</em> LOOP <em>·</em> TOPOLOGY <em>·</em></span>
+      <span>PROMPT <em>·</em> CONTEXT <em>·</em> MEMORY <em>·</em> TOOL <em>·</em> SKILL <em>·</em> AGENT <em>·</em> LOOP <em>·</em> TOPOLOGY <em>·</em></span>
+    </div>
+  </div>
+
+  <!-- 巨型引言 -->
+  <section class="hp-manifesto">
+    <div class="container">
+      <blockquote>
+        整理一份关于 Agent 时代的「小词典」,<br>
+        不是为了背下来,而是为了在混乱的术语里,<br>
+        找到一个<em>共同的支点</em>。
+        <cite>—— Zero-Library · 开篇</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- TOC 概念目录 -->
+  <section id="concepts" class="hp-section">
+    <div class="container">
+      <div class="hp-section__head">
+        <div>
+          <div class="hp-section__num">§ 01 — TABLE OF CONTENTS</div>
+          <h2 class="hp-section__title">八件事,<br><em>一份目录。</em></h2>
         </div>
+        <p class="hp-section__sub">按"输入 → 能力 → 结构"三层组织。每条带定义、典型用法、最小可跑代码,以及最容易踩的坑。</p>
+      </div>
 
-        <div class="lib-grid">
-          <a class="lib-card" href="pages/prompt.html">
-            <div class="lib-card__num">01 / CORE</div>
-            <h3 class="lib-card__title">Prompt</h3>
-            <p class="lib-card__desc">模型读到的全部输入。包括指令、上下文、示例、约束 —— 是和模型对话的"程序"。</p>
-            <div class="lib-card__tags">
-              <span class="lib-card__tag">基础</span>
-              <span class="lib-card__tag">文本</span>
-            </div>
+      <div class="hp-toc">
+        <a class="hp-toc__row" href="pages/prompt.html">
+          <span class="hp-toc__num">I · 01</span>
+          <span class="hp-toc__name"><span class="en">Input Layer · 01</span>Prompt</span>
+          <span class="hp-toc__desc">模型读到的全部输入 —— 指令、上下文、示例、约束的总和。是和模型对话的"程序"。</span>
+          <span class="hp-toc__tag">→ 第 一 章</span>
+          <span class="hp-toc__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="hp-toc__row" href="pages/context.html">
+          <span class="hp-toc__num">I · 02</span>
+          <span class="hp-toc__name"><span class="en">Input Layer · 02</span>Context</span>
+          <span class="hp-toc__desc">模型一次能"看见"的全部信息。窗口有限,怎么塞、塞什么、什么时候清掉,是个工程问题。</span>
+          <span class="hp-toc__tag">→ 第 二 章</span>
+          <span class="hp-toc__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="hp-toc__row" href="pages/memory.html">
+          <span class="hp-toc__num">I · 03</span>
+          <span class="hp-toc__name"><span class="en">Input Layer · 03</span>Memory</span>
+          <span class="hp-toc__desc">跨会话保留的信息。短期在 context 里,长期写在外面再按需取回 —— 三种典型形态。</span>
+          <span class="hp-toc__tag">→ 第 三 章</span>
+          <span class="hp-toc__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="hp-toc__row" href="pages/tool.html">
+          <span class="hp-toc__num">II · 04</span>
+          <span class="hp-toc__name"><span class="en">Capability · 04</span>Tool</span>
+          <span class="hp-toc__desc">让模型能"动手"的东西。搜索、查询数据库、发邮件 —— 模型通过调用 Tool 真正改变外部世界。</span>
+          <span class="hp-toc__tag">→ 第 四 章</span>
+          <span class="hp-toc__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="hp-toc__row" href="pages/skill.html">
+          <span class="hp-toc__num">II · 05</span>
+          <span class="hp-toc__name"><span class="en">Capability · 05</span>Skill</span>
+          <span class="hp-toc__desc">可复用的 prompt + tool + 文档的组合单元。把"做一件事"打包成一次调用,而不是每次重写。</span>
+          <span class="hp-toc__tag">→ 第 五 章</span>
+          <span class="hp-toc__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="hp-toc__row" href="pages/agent.html">
+          <span class="hp-toc__num">II · 06</span>
+          <span class="hp-toc__name"><span class="en">Capability · 06</span>Agent</span>
+          <span class="hp-toc__desc">能自主规划、调用工具、达成目标的程序。一个 prompt + 一组 tool + 一个 loop,基本就够了。</span>
+          <span class="hp-toc__tag">→ 第 六 章</span>
+          <span class="hp-toc__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="hp-toc__row" href="pages/loop.html">
+          <span class="hp-toc__num">III · 07</span>
+          <span class="hp-toc__name"><span class="en">Structure · 07</span>Loop</span>
+          <span class="hp-toc__desc">Agent 反复执行"观察 → 思考 → 行动"直到目标达成的循环结构。ReAct 是最经典的一种。</span>
+          <span class="hp-toc__tag">→ 第 七 章</span>
+          <span class="hp-toc__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="hp-toc__row" href="pages/topology.html">
+          <span class="hp-toc__num">III · 08</span>
+          <span class="hp-toc__name"><span class="en">Structure · 08</span>Topology</span>
+          <span class="hp-toc__desc">多个 Agent 怎么连。串行、并行、监督 —— 不同的拓扑对应不同的组织哲学,各有取舍。</span>
+          <span class="hp-toc__tag">→ 第 八 章</span>
+          <span class="hp-toc__arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三层 Bento -->
+  <section class="hp-section">
+    <div class="container">
+      <div class="hp-section__head">
+        <div>
+          <div class="hp-section__num">§ 02 — THE THREE LAYERS</div>
+          <h2 class="hp-section__title">三个层次,<br><em>一种切分。</em></h2>
+        </div>
+        <p class="hp-section__sub">这些概念大致落在三层上 —— 越往上越靠近"做事",越往下越靠近"模型本身"。</p>
+      </div>
+
+      <div class="hp-bento">
+        <div class="hp-bento__cell hp-bento__cell--tall">
+          <div class="hp-bento__num">A · INPUT LAYER</div>
+          <h3 class="hp-bento__name">输入层</h3>
+          <p class="hp-bento__desc">你给模型什么。这一层处理"对话",决定了模型对任务的理解深度与稳定性。</p>
+          <ul class="hp-bento__list">
+            <li><a href="pages/prompt.html">Prompt</a><span class="en">01</span></li>
+            <li><a href="pages/context.html">Context</a><span class="en">02</span></li>
+            <li><a href="pages/memory.html">Memory</a><span class="en">03</span></li>
+          </ul>
+        </div>
+        <div class="hp-bento__cell">
+          <div class="hp-bento__num">B · CAPABILITY</div>
+          <h3 class="hp-bento__name">能力层</h3>
+          <p class="hp-bento__desc">模型能做什么。这一层把对话变成"做事",是 Agent 真正落地的地方。</p>
+        </div>
+        <div class="hp-bento__cell">
+          <div class="hp-bento__num">C · STRUCTURE</div>
+          <h3 class="hp-bento__name">结构层</h3>
+          <p class="hp-bento__desc">这些能力怎么组合。Loop 是单体的节奏,Topology 是多体的编排。</p>
+        </div>
+        <div class="hp-bento__cell">
+          <div class="hp-bento__num">B · 04 / 05 / 06</div>
+          <h3 class="hp-bento__name">Tool · Skill · Agent</h3>
+          <p class="hp-bento__desc">从原子动作(函数),到可复用组合(技能),再到自主目标(代理) —— 三级跃迁。</p>
+          <ul class="hp-bento__list">
+            <li><a href="pages/tool.html">Tool</a><span class="en">04</span></li>
+            <li><a href="pages/skill.html">Skill</a><span class="en">05</span></li>
+            <li><a href="pages/agent.html">Agent</a><span class="en">06</span></li>
+          </ul>
+        </div>
+        <div class="hp-bento__cell">
+          <div class="hp-bento__num">C · 07 / 08</div>
+          <h3 class="hp-bento__name">Loop · Topology</h3>
+          <p class="hp-bento__desc">单体的循环(ReAct、Reflection),多体的编排(串行、并行、监督) —— 节奏与拓扑。</p>
+          <ul class="hp-bento__list">
+            <li><a href="pages/loop.html">Loop</a><span class="en">07</span></li>
+            <li><a href="pages/topology.html">Topology</a><span class="en">08</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 统计行 -->
+  <section class="hp-section" style="padding: 0;">
+    <div class="container">
+      <div class="hp-stats">
+        <div class="hp-stats__cell">
+          <div class="hp-stats__num">8<em>个</em></div>
+          <div class="hp-stats__label">核心概念</div>
+        </div>
+        <div class="hp-stats__cell">
+          <div class="hp-stats__num">3<em>编</em></div>
+          <div class="hp-stats__label">章节分布</div>
+        </div>
+        <div class="hp-stats__cell">
+          <div class="hp-stats__num">30<em>分钟</em></div>
+          <div class="hp-stats__label">通读时长</div>
+        </div>
+        <div class="hp-stats__cell">
+          <div class="hp-stats__num">MIT<em>·</em></div>
+          <div class="hp-stats__label">内容许可</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA 横幅 -->
+  <section class="hp-cta-banner">
+    <div class="container">
+      <div class="hp-cta-banner__inner">
+        <div>
+          <h2 class="hp-cta-banner__title">读完,你也<em>整理一份</em><br>自己的概念词典。</h2>
+          <p class="hp-cta-banner__sub">任何人都可以在 GitHub 上提 PR —— 补概念、改错别字、给出反例,都很欢迎。</p>
+        </div>
+        <div class="hp-cta-banner__right">
+          <a class="hp-cta hp-cta--primary" href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">
+            在 GitHub 上查看 ↗
           </a>
-
-          <a class="lib-card" href="pages/context.html">
-            <div class="lib-card__num">02 / CORE</div>
-            <h3 class="lib-card__title">Context</h3>
-            <p class="lib-card__desc">模型一次能"看见"的全部信息。窗口有限,所以怎么塞、塞什么、什么时候清掉,是个工程问题。</p>
-            <div class="lib-card__tags">
-              <span class="lib-card__tag">窗口</span>
-              <span class="lib-card__tag">工程</span>
-            </div>
-          </a>
-
-          <a class="lib-card" href="pages/tool.html">
-            <div class="lib-card__num">03 / CORE</div>
-            <h3 class="lib-card__title">Tool</h3>
-            <p class="lib-card__desc">让模型能"动手"的东西。搜索、查询数据库、发邮件 —— 模型通过调用 Tool 真正改变外部世界。</p>
-            <div class="lib-card__tags">
-              <span class="lib-card__tag">函数</span>
-              <span class="lib-card__tag">动作</span>
-            </div>
-          </a>
-
-          <a class="lib-card" href="pages/memory.html">
-            <div class="lib-card__num">04 / CORE</div>
-            <h3 class="lib-card__title">Memory</h3>
-            <p class="lib-card__desc">跨会话保留的信息。短期记忆是当前 context,长期记忆是写在外面再按需取回的东西。</p>
-            <div class="lib-card__tags">
-              <span class="lib-card__tag">短期</span>
-              <span class="lib-card__tag">长期</span>
-            </div>
-          </a>
-
-          <a class="lib-card" href="pages/skill.html">
-            <div class="lib-card__num">05 / CORE</div>
-            <h3 class="lib-card__title">Skill</h3>
-            <p class="lib-card__desc">可复用的 prompt + tool + 文档的组合单元。把"做一件事"打包成一次调用,而不是每次重写 prompt。</p>
-            <div class="lib-card__tags">
-              <span class="lib-card__tag">打包</span>
-              <span class="lib-card__tag">复用</span>
-            </div>
-          </a>
-
-          <a class="lib-card" href="pages/loop.html">
-            <div class="lib-card__num">06 / CORE</div>
-            <h3 class="lib-card__title">Loop</h3>
-            <p class="lib-card__desc">Agent 反复执行"观察 → 思考 → 行动"直到目标达成的循环结构。ReAct 是最经典的一种。</p>
-            <div class="lib-card__tags">
-              <span class="lib-card__tag">循环</span>
-              <span class="lib-card__tag">ReAct</span>
-            </div>
-          </a>
-
-          <a class="lib-card" href="pages/topology.html">
-            <div class="lib-card__num">07 / CORE</div>
-            <h3 class="lib-card__title">Topology</h3>
-            <p class="lib-card__desc">多个 Agent 怎么连。串行、并行、监督 —— 不同的拓扑对应不同的组织哲学,各有取舍。</p>
-            <div class="lib-card__tags">
-              <span class="lib-card__tag">串行</span>
-              <span class="lib-card__tag">并行</span>
-            </div>
-          </a>
-
-          <a class="lib-card" href="pages/agent.html">
-            <div class="lib-card__num">08 / CORE</div>
-            <h3 class="lib-card__title">Agent</h3>
-            <p class="lib-card__desc">能自主规划、调用工具、达成目标的程序。一个 prompt + 一组 tool + 一个 loop,基本就够了。</p>
-            <div class="lib-card__tags">
-              <span class="lib-card__tag">自主</span>
-              <span class="lib-card__tag">目标</span>
-            </div>
+          <a class="hp-cta hp-cta--ghost" href="feed.xml">
+            RSS 订阅
           </a>
         </div>
       </div>
-    </section>
-
-    <!-- 引言 -->
-    <section class="lib-section">
-      <div class="container">
-        <div class="lib-section__head">
-          <div>
-            <h2 class="lib-section__title">写在前面</h2>
-            <p class="lib-section__sub">为什么要把"概念"单独整理出来。</p>
-          </div>
-        </div>
-        <div class="lib-quote">
-          <p>Agent 时代最大的变化,不是模型变强了 —— 是问题被重新切分了。Prompt、Context、Tool、Memory…… 这些词以前只在论文里出现,现在每个工程师每天都要处理。</p>
-          <p>整理一份关于它们的"小词典",不是为了背下来,而是为了在混乱的术语里,能找到一个共同的支点。</p>
-          <cite>—— Zero-Library · 开篇</cite>
-        </div>
-      </div>
-    </section>
-
-    <!-- 主题分类 -->
-    <section class="lib-section">
-      <div class="container">
-        <div class="lib-section__head">
-          <div>
-            <h2 class="lib-section__title">三个层次</h2>
-            <p class="lib-section__sub">这些概念大致落在三个层次上 —— 越往上越靠近"做事",越往下越靠近"模型本身"。</p>
-          </div>
-        </div>
-        <div class="lib-themes">
-          <div class="lib-theme">
-            <div class="lib-theme__name">输入层 · Input</div>
-            <p class="lib-theme__desc">你给模型什么。Prompt、Context、Memory。</p>
-          </div>
-          <div class="lib-theme">
-            <div class="lib-theme__name">能力层 · Capability</div>
-            <p class="lib-theme__desc">模型能做什么。Tool、Skill、Agent。</p>
-          </div>
-          <div class="lib-theme">
-            <div class="lib-theme__name">结构层 · Structure</div>
-            <p class="lib-theme__desc">这些能力怎么组合。Loop、Topology。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- 页脚 -->
-  <footer class="lib-footer">
+  <footer class="hp-footer">
     <div class="container">
-      <div class="lib-footer__grid">
-        <div class="lib-footer__col">
-          <div class="lib-footer__brand">
+      <div class="hp-footer__top">
+        <div class="hp-footer__col">
+          <div class="hp-footer__brand-row">
             <img src="img/logo.svg" alt="" />
             Zero-Library
           </div>
-          <p class="lib-footer__tagline">Agent 时代的核心概念 —— 一本持续更新的极简小书。</p>
+          <p class="hp-footer__tagline">Agent 时代的核心概念 —— 一本持续更新的极简小书。</p>
         </div>
-        <div class="lib-footer__col">
-          <h4>浏览</h4>
+        <div class="hp-footer__col">
+          <h4>NAVIGATE</h4>
           <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="intro.html">序言</a></li>
@@ -241,19 +317,46 @@
             <li><a href="about.html">关于</a></li>
           </ul>
         </div>
-        <div class="lib-footer__col">
-          <h4>更多</h4>
+        <div class="hp-footer__col">
+          <h4>SOURCES</h4>
           <ul>
             <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></li>
             <li><a href="feed.xml">RSS 订阅</a></li>
+            <li><a href="sitemap.xml">Sitemap</a></li>
           </ul>
         </div>
       </div>
-      <div class="lib-footer__bottom">
-        <div>© 2026 Zero · 非商业的个人记录</div>
-        <div>Built with plain HTML, CSS &amp; a bit of JS</div>
+
+      <p class="hp-footer__wordmark">Zero<em>·</em>Library</p>
+
+      <div class="hp-footer__bottom">
+        <div>© 2026 Zero · 一本非商业的小书</div>
+        <div>BUILT WITH PLAIN HTML, CSS &amp; A BIT OF JS</div>
+        <div>SET IN INTER + LXGW WENKAI + JETBRAINS MONO</div>
       </div>
     </div>
   </footer>
+
+  <script>
+    // 滚动时显示元素
+    (function () {
+      if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.hp-reveal').forEach(el => el.classList.add('is-in'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.hp-section, .hp-manifesto, .hp-cta-banner').forEach(el => {
+        el.classList.add('hp-reveal');
+        io.observe(el);
+      });
+    })();
+  </script>
 </body>
 </html>
