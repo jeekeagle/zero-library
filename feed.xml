@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zero-Library · Agent 时代的核心概念</title>
+    <link>https://jeekeagle.github.io/zero-library/</link>
+    <description>一本关于 Agent 时代核心概念的极简小书 —— Prompt、Context、Memory、Tool、Skill、Agent、Loop、Topology。</description>
+    <language>zh-Hans</language>
+    <atom:link href="https://jeekeagle.github.io/zero-library/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>Agent —— 能自主规划、调用工具、达成目标的程序</title>
+      <link>https://jeekeagle.github.io/zero-library/pages/agent.html</link>
+      <description>Agent 不是一个更聪明的对话,而是一个会自己决定下一步该干什么的循环体。</description>
+      <pubDate>Sun, 22 Jun 2026 00:00:00 +0800</pubDate>
+      <guid>https://jeekeagle.github.io/zero-library/pages/agent.html</guid>
+    </item>
+
+    <item>
+      <title>Topology —— 多个 Agent 怎么连</title>
+      <link>https://jeekeagle.github.io/zero-library/pages/topology.html</link>
+      <description>串行、并行、监督 —— 每种拓扑背后是不同的组织哲学。</description>
+      <pubDate>Sun, 22 Jun 2026 00:00:00 +0800</pubDate>
+      <guid>https://jeekeagle.github.io/zero-library/pages/topology.html</guid>
+    </item>
+
+    <item>
+      <title>Skill —— 可复用的 prompt + tool + 文档的组合单元</title>
+      <link>https://jeekeagle.github.io/zero-library/pages/skill.html</link>
+      <description>把做一件事打包成一次调用,而不是每次重写 prompt。</description>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0800</pubDate>
+      <guid>https://jeekeagle.github.io/zero-library/pages/skill.html</guid>
+    </item>
+
+    <item>
+      <title>Loop —— 观察 → 思考 → 行动 的循环</title>
+      <link>https://jeekeagle.github.io/zero-library/pages/loop.html</link>
+      <description>ReAct、Reflection、Plan-and-Execute —— 三种典型循环结构。</description>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0800</pubDate>
+      <guid>https://jeekeagle.github.io/zero-library/pages/loop.html</guid>
+    </item>
+
+    <item>
+      <title>Tool —— 让模型能"动手"的东西</title>
+      <link>https://jeekeagle.github.io/zero-library/pages/tool.html</link>
+      <description>函数、API、命令 —— 模型通过调用 Tool 真正改变外部世界。</description>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 +0800</pubDate>
+      <guid>https://jeekeagle.github.io/zero-library/pages/tool.html</guid>
+    </item>
+
+    <item>
+      <title>Memory —— 跨会话保留的信息</title>
+      <link>https://jeekeagle.github.io/zero-library/pages/memory.html</link>
+      <description>短期、长期、向量库 —— 三种典型形态。</description>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 +0800</pubDate>
+      <guid>https://jeekeagle.github.io/zero-library/pages/memory.html</guid>
+    </item>
+
+    <item>
+      <title>Context —— 模型一次能看见的全部信息</title>
+      <link>https://jeekeagle.github.io/zero-library/pages/context.html</link>
+      <description>怎么塞、塞什么、什么时候清掉 —— 是 Agent 工程的核心手艺。</description>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://jeekeagle.github.io/zero-library/pages/context.html</guid>
+    </item>
+
+    <item>
+      <title>Prompt —— 模型读到的全部输入</title>
+      <link>https://jeekeagle.github.io/zero-library/pages/prompt.html</link>
+      <description>指令、上下文、示例、约束 —— 是和模型对话的"程序"。</description>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://jeekeagle.github.io/zero-library/pages/prompt.html</guid>
+    </item>
+  </channel>
+</rss>
