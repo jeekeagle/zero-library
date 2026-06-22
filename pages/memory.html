@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory · Zero-Library</title>
+  <meta name="description" content="Memory —— 跨会话保留的信息:短期、长期、向量库、文件。" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="../index.html">
+        <img class="logo-mark" src="../img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../intro.html">序言</a></li>
+        <li><a href="../archive.html">索引</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list"><li><a href="../intro.html">序言</a></li></ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="prompt.html">一 · Prompt</a></li>
+          <li><a href="context.html">二 · Context</a></li>
+          <li><a href="memory.html" class="active">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="tool.html">四 · Tool</a></li>
+          <li><a href="skill.html">五 · Skill</a></li>
+          <li><a href="agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="loop.html">七 · Loop</a></li>
+          <li><a href="topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="../archive.html">索引</a></li>
+          <li><a href="../about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="../index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <a href="../intro.html">序章</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">三 · Memory</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">三</span>
+            <span class="lib-chapter-meta__vol">第一编 · 第三章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>2026.04</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 4 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">Memory</h1>
+          <p class="lib-chapter__subtitle">跨会话保留的信息 —— 短期、长期、向量库。</p>
+          <div class="lib-chapter__tags">
+            <span class="tag">输入层</span>
+            <span class="tag">状态</span>
+            <span class="tag">存储</span>
+          </div>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>定义</h2>
+          <p><strong>Memory</strong>(记忆)是<strong>跨会话、跨调用</strong>保留的信息。Context 是一次推理里模型能看见的东西;Memory 是<em>那次推理结束之后还能被找回</em>的东西。</p>
+
+          <h2><span class="num">二</span>为什么重要</h2>
+          <p>模型的"原生记忆"几乎为零 —— 每次调用是独立的。Memory 是给模型外挂一个大脑,让它记得"你昨天说过你不吃辣"、"你的项目叫 X"、"上次你犯的错是漏了单元测试"。</p>
+
+          <h2><span class="num">三</span>三种典型形态</h2>
+          <h3>1. 短期(本次会话)</h3>
+          <p>放在 context 里即可。消息列表、累积对话。多轮对话默认就是这种。</p>
+          <h3>2. 长期(跨会话)</h3>
+          <p>写进外部存储。常见做法:</p>
+          <ul>
+            <li><strong>SQLite / JSON 文件</strong> —— 简单场景,几万条以内。</li>
+            <li><strong>向量数据库</strong>(Pinecone、Chroma、pgvector) —— 需要语义检索。</li>
+            <li><strong>KV 数据库</strong>(Redis) —— 频繁读写、低延迟。</li>
+          </ul>
+          <h3>3. 工作记忆(本次任务)</h3>
+          <p>任务执行期间的中间状态,任务结束就清。比如 Agent 当前已经查过哪些 URL、算过哪些中间结果。</p>
+
+          <h2><span class="num">四</span>最小可跑的例子</h2>
+<pre><code># 写一条记忆
+import chromadb
+client = chromadb.PersistentClient(path="./memory")
+col = client.get_or_create_collection("user_facts")
+col.add(ids=["u1"], documents=["用户不吃辣,来自上海,做后端开发。"])
+
+# 检索
+q = "他能吃川菜吗?"
+res = col.query(query_texts=[q], n_results=2)
+for doc, dist in zip(res["documents"][0], res["distances"][0]):
+    print(f"[{dist:.2f}] {doc}")
+# [0.41] 用户不吃辣,来自上海,做后端开发。</code></pre>
+
+          <h2><span class="num">五</span>常见误区</h2>
+          <ul>
+            <li><strong>什么都往记忆里塞</strong> —— 噪声记忆会让检索变差,要定期<em>合并、过期、清理</em>。</li>
+            <li><strong>把原始对话当记忆</strong> —— 应该<em>提炼成事实</em>(用户偏好、项目元数据),而不是堆整段聊天。</li>
+            <li><strong>不分层</strong> —— 把"用户名字"和"上次出错的堆栈"放同一层,优先级会乱。</li>
+          </ul>
+
+          <div class="lib-chapter-nav">
+            <a href="context.html"><small>← 上一篇</small>二 · Context</a>
+            <a href="tool.html" style="text-align: right;"><small>下一篇 →</small>四 · Tool</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
