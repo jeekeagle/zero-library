@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+  <!-- 节点 + 链接:Agent 概念图 -->
+  <g stroke="currentColor" stroke-width="1" stroke-linecap="round">
+    <line x1="8"  y1="8"  x2="16" y2="16" opacity="0.55"/>
+    <line x1="24" y1="8"  x2="16" y2="16" opacity="0.55"/>
+    <line x1="8"  y1="24" x2="16" y2="16" opacity="0.55"/>
+    <line x1="24" y1="24" x2="16" y2="16" opacity="0.55"/>
+    <line x1="8"  y1="8"  x2="24" y2="8"  opacity="0.3"/>
+    <line x1="8"  y1="24" x2="24" y2="24" opacity="0.3"/>
+    <line x1="8"  y1="8"  x2="8"  y2="24" opacity="0.3"/>
+    <line x1="24" y1="8"  x2="24" y2="24" opacity="0.3"/>
+  </g>
+  <g fill="currentColor">
+    <circle cx="16" cy="16" r="4"/>
+    <circle cx="8"  cy="8"  r="2" opacity="0.7"/>
+    <circle cx="24" cy="8"  r="2" opacity="0.7"/>
+    <circle cx="8"  cy="24" r="2" opacity="0.7"/>
+    <circle cx="24" cy="24" r="2" opacity="0.7"/>
+  </g>
+</svg>
