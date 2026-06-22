@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt · Zero-Library</title>
+  <meta name="description" content="Prompt —— 模型读到的全部输入:指令、上下文、示例、约束。" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="../index.html">
+        <img class="logo-mark" src="../img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../intro.html">序言</a></li>
+        <li><a href="../archive.html">索引</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索" title="搜索 (Ctrl+K)">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list"><li><a href="../intro.html">序言</a></li></ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="prompt.html" class="active">一 · Prompt</a></li>
+          <li><a href="context.html">二 · Context</a></li>
+          <li><a href="memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="tool.html">四 · Tool</a></li>
+          <li><a href="skill.html">五 · Skill</a></li>
+          <li><a href="agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="loop.html">七 · Loop</a></li>
+          <li><a href="topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="../archive.html">索引</a></li>
+          <li><a href="../about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="../index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <a href="../intro.html">序章</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">一 · Prompt</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">一</span>
+            <span class="lib-chapter-meta__vol">第一编 · 第一章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>2026.03</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 4 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">Prompt</h1>
+          <p class="lib-chapter__subtitle">模型读到的全部输入 —— 指令、上下文、示例、约束的总和。</p>
+          <div class="lib-chapter__tags">
+            <span class="tag">输入层</span>
+            <span class="tag">基础</span>
+            <span class="tag">文本</span>
+          </div>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>定义</h2>
+          <p><strong>Prompt</strong> 是模型在一次调用中读到的<strong>全部输入文本</strong>。它不只是"你问的那个问题",还包括系统指令、上下文、示例、约束条件 —— 一切会被拼在一起发给模型的内容。</p>
+
+          <h2><span class="num">二</span>为什么重要</h2>
+          <p>Prompt 是人和模型之间<strong>唯一可控的接口</strong>。模型权重是冻结的、训练数据是历史的,只有 prompt 是当下、可改、可调试的。同一个模型,prompt 写得不一样,产出能差一个数量级。</p>
+
+          <h2><span class="num">三</span>典型结构</h2>
+          <p>一个成熟的 prompt 大致包含这几块:</p>
+<pre><code># role
+你是一名高级客服。
+
+# context
+- 用户:张三
+- 历史:上一轮问过退款政策
+- 产品:某品牌耳机
+
+# task
+判断用户意图,从工具列表中选一个,输出 JSON。
+
+# examples
+user: "我想退掉昨天买的耳机"
+assistant: {"intent": "refund", "tool": "create_refund", ...}
+
+# constraints
+- 不知道就说"不确定"
+- 不要编造订单号</code></pre>
+
+          <h2><span class="num">四</span>最小可跑的例子</h2>
+<pre><code>import openai
+
+prompt = """
+你是一个翻译。把下面的话译成英文。
+只输出译文,不要解释。
+
+原文:今天天气很好。
+"""
+
+resp = openai.ChatCompletion.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": prompt}]
+)
+print(resp.choices[0].message.content)
+# The weather is nice today.</code></pre>
+
+          <h2><span class="num">五</span>常见误区</h2>
+          <ul>
+            <li><strong>把 prompt 当作文本</strong> —— 它其实是<em>源码</em>,应该有版本、能 diff、能 review。</li>
+            <li><strong>堆砌示例</strong> —— 3 个高质量示例 &gt; 20 个低质量示例。</li>
+            <li><strong>忽略负向约束</strong> —— "不要做 X" 比 "做 Y" 往往更省 token。</li>
+            <li><strong>prompt 与模型版本强耦合</strong> —— 同一段 prompt 在不同模型上行为可能天差地别,要绑定版本测试。</li>
+          </ul>
+
+          <div class="lib-chapter-nav">
+            <a href="../archive.html"><small>← 上一篇</small>索引</a>
+            <a href="context.html" style="text-align: right;"><small>下一篇 →</small>二 · Context</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
