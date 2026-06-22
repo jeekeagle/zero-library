@@ -1,0 +1,11 @@
+# Zero-Library · robots.txt
+# https://jeekeagle.github.io/zero-library/
+
+User-agent: *
+Allow: /
+
+# 站内搜索索引
+Allow: /search-index.json
+
+# Sitemap
+Sitemap: https://jeekeagle.github.io/zero-library/sitemap.xml
