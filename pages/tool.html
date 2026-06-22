@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tool · Zero-Library</title>
+  <meta name="description" content="Tool —— 让模型能"动手"的东西:函数、API、命令。" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="lib-drawer-overlay"></div>
+  <nav class="lib-nav" aria-label="主导航">
+    <div class="container lib-nav__inner">
+      <button class="lib-nav__drawer-toggle" type="button" aria-label="打开菜单">☰</button>
+      <a class="lib-nav__brand" href="../index.html">
+        <img class="logo-mark" src="../img/logo.svg" alt="Zero-Library" /> Zero-Library
+      </a>
+      <ul class="lib-nav__links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../intro.html">序言</a></li>
+        <li><a href="../archive.html">索引</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="https://github.com/jeekeagle/zero-library" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+      <div class="lib-nav__actions">
+        <button class="lib-icon-btn lib-search-trigger" type="button" aria-label="搜索">⌕</button>
+        <button class="lib-icon-btn lib-theme-toggle" type="button" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lib-book">
+    <aside class="lib-toc" aria-label="目录">
+      <div class="lib-toc__title">本书目录</div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">序章</div>
+        <ul class="lib-toc__list"><li><a href="../intro.html">序言</a></li></ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第一编 · 输入层</div>
+        <ul class="lib-toc__list">
+          <li><a href="prompt.html">一 · Prompt</a></li>
+          <li><a href="context.html">二 · Context</a></li>
+          <li><a href="memory.html">三 · Memory</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第二编 · 能力层</div>
+        <ul class="lib-toc__list">
+          <li><a href="tool.html" class="active">四 · Tool</a></li>
+          <li><a href="skill.html">五 · Skill</a></li>
+          <li><a href="agent.html">六 · Agent</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">第三编 · 结构层</div>
+        <ul class="lib-toc__list">
+          <li><a href="loop.html">七 · Loop</a></li>
+          <li><a href="topology.html">八 · Topology</a></li>
+        </ul>
+      </div>
+      <div class="lib-toc__group">
+        <div class="lib-toc__group-label">附录</div>
+        <ul class="lib-toc__list">
+          <li><a href="../archive.html">索引</a></li>
+          <li><a href="../about.html">关于</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lib-book__main">
+      <nav class="lib-breadcrumb" aria-label="面包屑">
+        <a href="../index.html">首页</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <a href="../intro.html">序章</a>
+        <span class="lib-breadcrumb__sep">/</span>
+        <span class="lib-breadcrumb__current">四 · Tool</span>
+      </nav>
+
+      <article>
+        <header>
+          <div class="lib-chapter-meta">
+            <span class="lib-chapter-meta__seal">四</span>
+            <span class="lib-chapter-meta__vol">第二编 · 第一章</span>
+            <span class="lib-chapter-meta__sep">·</span>
+            <time>2026.04</time>
+            <span class="lib-chapter-meta__sep">·</span>
+            <span>约 4 分钟读完</span>
+          </div>
+          <h1 class="lib-chapter__title">Tool</h1>
+          <p class="lib-chapter__subtitle">让模型能"动手"的东西 —— 函数、API、命令。</p>
+          <div class="lib-chapter__tags">
+            <span class="tag">能力层</span>
+            <span class="tag">函数</span>
+            <span class="tag">动作</span>
+          </div>
+        </header>
+
+        <div class="lib-prose">
+          <h2><span class="num">一</span>定义</h2>
+          <p><strong>Tool</strong>(工具)是模型被允许调用的<strong>外部函数</strong>。模型本身只能生成文本,通过 Tool,它才能查天气、读数据库、发邮件、改文件 ——<strong>真正改变外部世界</strong>。</p>
+
+          <h2><span class="num">二</span>为什么重要</h2>
+          <p>Tool 是<strong>从"聊天"到"做事"</strong>的关键。没有 Tool,模型就是一本会说话的百科全书;有了 Tool,它才能像一个能跑代码、查系统、调接口的工程师。</p>
+
+          <h2><span class="num">三</span>典型结构</h2>
+          <p>每个 Tool 通常需要声明三件事:</p>
+          <ul>
+            <li><strong>名字</strong> —— <code>get_weather</code></li>
+            <li><strong>描述</strong> —— 告诉模型这个工具是干啥的、何时该用</li>
+            <li><strong>参数 schema</strong> —— 用 JSON Schema 描述参数形状</li>
+          </ul>
+
+          <h2><span class="num">四</span>最小可跑的例子</h2>
+<pre><code>import json
+from openai import OpenAI
+
+client = OpenAI()
+
+tools = [{
+    "type": "function",
+    "function": {
+        "name": "get_weather",
+        "description": "查询某城市的当前天气。",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "city": {"type": "string", "description": "城市名,例如 'Beijing'"}
+            },
+            "required": ["city"]
+        }
+    }
+}]
+
+def get_weather(city):
+    return {"city": city, "temp": 22, "sky": "晴"}
+
+resp = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": "北京今天天气怎么样?"}],
+    tools=tools,
+)
+call = resp.choices[0].message.tool_calls[0]
+args = json.loads(call.function.arguments)
+result = get_weather(**args)
+print(result)  # {'city': 'Beijing', 'temp': 22, 'sky': '晴'}</code></pre>
+
+          <h2><span class="num">五</span>常见误区</h2>
+          <ul>
+            <li><strong>Tool 太多</strong> —— 模型一次能稳定选择的不超过 10 个,多了就开始乱点。</li>
+            <li><strong>描述写得像技术文档</strong> —— 描述是<em>写给模型看的</em>,要直白、带例子、带边界。</li>
+            <li><strong>Tool 没做幂等保护</strong> —— 模型可能重试同一调用,写操作要带幂等键。</li>
+            <li><strong>把 Tool 当 Skill</strong> —— Tool 是<em>原子动作</em>,Skill 是<em>多个 Tool + 规则</em>的组合(详见 Skill 章)。</li>
+          </ul>
+
+          <div class="lib-chapter-nav">
+            <a href="memory.html"><small>← 上一篇</small>三 · Memory</a>
+            <a href="skill.html" style="text-align: right;"><small>下一篇 →</small>五 · Skill</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
