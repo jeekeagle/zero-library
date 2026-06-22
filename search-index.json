@@ -1,0 +1,68 @@
+[
+  {
+    "title": "为什么要整理这些概念",
+    "url": "intro.html",
+    "body": "序言 · Zero-Library Agent 时代的核心概念 Prompt Context Memory Tool Skill Agent Loop Topology 不追新词,只把这一代 AI 工程里反复出现的那些概念,讲清楚 一 问题的提出 2024 年开始,做 AI 工程的人和写 Prompt 的人开始用同一套术语。但术语太多、更新太快 —— 一会儿 function calling,一会儿 tool use;一会儿 RAG,一会儿 context window;一会儿 agent,一会儿 workflow。新人来学,老兵自己讲,讲的都不是同一个东西。这本小书,想做的就是:把这一代 AI 工程里 反复出现的、最重要的 8 个概念,用尽量短的篇幅讲清楚。",
+    "excerpt": "Agent 时代的关键词越来越多,先把最常用、最重要的一组钉住。"
+  },
+  {
+    "title": "关于这间小书铺",
+    "url": "about.html",
+    "body": "关于 · Zero-Library 关于它的来历、原则与未来 概念 (Concept) —— 一个具体的词,比如 Prompt、Context、Tool、Agent。关系 (Relation) —— 这些概念之间怎么连,谁包含谁,谁和谁配合。极简、带最小例子、承认边界、开源协作。",
+    "excerpt": "关于 Zero-Library 这个小书的来历、写作原则与未来计划。"
+  },
+  {
+    "title": "所有概念",
+    "url": "archive.html",
+    "body": "索引 · Zero-Library 按时间倒序 也可按编章顺序浏览 一 Prompt 二 Context 三 Memory 四 Tool 五 Skill 六 Agent 七 Loop 八 Topology 共 8 个核心概念 3 编 输入层 能力层 结构层",
+    "excerpt": "所有概念的索引 —— 按编、按章、按时间倒序排列。"
+  },
+  {
+    "title": "Prompt",
+    "url": "pages/prompt.html",
+    "body": "Prompt · 第一编 · 第一章 模型读到的全部输入 指令 上下文 示例 约束的总和。Prompt 是模型在一次调用中读到的 全部输入文本。它不只是你问的那个问题,还包括系统指令、上下文、示例、约束条件 —— 一切会被拼在一起发给模型的内容。Prompt 是人和模型之间 唯一可控的接口。role context task examples constraints。",
+    "excerpt": "模型读到的全部输入 —— 指令、上下文、示例、约束的总和。"
+  },
+  {
+    "title": "Context",
+    "url": "pages/context.html",
+    "body": "Context · 第一编 · 第二章 模型一次能看见的全部信息,以及怎么在有限窗口里塞对东西。Context 上下文 是模型在一次前向推理中能 同时看见 的全部 token。系统提示、用户消息、历史回合、工具返回结果,都拼在一起,塞进一个固定大小的 上下文窗口 context window。怎么塞、塞什么、什么时候清掉,是 Agent 工程的核心手艺。",
+    "excerpt": "模型一次能看见的全部信息,以及怎么在有限窗口里塞对东西。"
+  },
+  {
+    "title": "Memory",
+    "url": "pages/memory.html",
+    "body": "Memory · 第一编 · 第三章 跨会话保留的信息 —— 短期、长期、向量库。Memory 记忆 是 跨会话、跨调用 保留的信息。Context 是一次推理里模型能看见的东西;Memory 是 那次推理结束之后还能被找回 的东西。三种典型形态:短期、长期、工作记忆。SQLite、向量数据库、KV 数据库。",
+    "excerpt": "跨会话保留的信息 —— 短期、长期、向量库。"
+  },
+  {
+    "title": "Tool",
+    "url": "pages/tool.html",
+    "body": "Tool · 第二编 · 第一章 让模型能动手的东西 —— 函数、API、命令。Tool 工具 是模型被允许调用的 外部函数。模型本身只能生成文本,通过 Tool,它才能查天气、读数据库、发邮件、改文件 —— 真正改变外部世界。Tool 是 从聊天到做事 的关键。name description parameters schema。",
+    "excerpt": "让模型能动手的东西 —— 函数、API、命令。"
+  },
+  {
+    "title": "Skill",
+    "url": "pages/skill.html",
+    "body": "Skill · 第二编 · 第二章 可复用的 prompt + tool + 文档的组合单元。Skill 是把做一件事打包成 一个可调用的单元。它通常包含:一段精心写的 prompt、若个干 Tool、必要的说明文档、以及可选的入口脚本。SKILL.md tools examples scripts。",
+    "excerpt": "可复用的 prompt + tool + 文档的组合单元。"
+  },
+  {
+    "title": "Agent",
+    "url": "pages/agent.html",
+    "body": "Agent · 第二编 · 第三章 能自主规划、调用工具、达成目标的程序。Agent 是一个 接到目标后能自主规划、调用工具、直到目标完成 的程序。它不是更聪明的对话,而是一个会 自己决定下一步该干什么 的循环体。观察 思考 行动。",
+    "excerpt": "能自主规划、调用工具、达成目标的程序。"
+  },
+  {
+    "title": "Loop",
+    "url": "pages/loop.html",
+    "body": "Loop · 第三编 · 第一章 Agent 反复执行 观察 → 思考 → 行动 直到目标达成。Loop 循环 是 Agent 的 运行骨架。ReAct Reason + Act、Reflection 反思、Plan-and-Execute 先规划,再执行。终止条件、最大步数、trace 压缩。",
+    "excerpt": "Agent 反复执行 观察 → 思考 → 行动 直到目标达成。"
+  },
+  {
+    "title": "Topology",
+    "url": "pages/topology.html",
+    "body": "Topology · 第三编 · 第二章 多个 Agent 怎么连 —— 串行、并行、监督,每种背后是不同的组织哲学。Topology 拓扑 是多个 Agent 之间的 连接方式。串行 流水线、并行 投票 竞争、监督 分层 Hierarchical。并行投票 concurrent futures ThreadPoolExecutor。",
+    "excerpt": "多个 Agent 怎么连 —— 串行、并行、监督。"
+  }
+]
